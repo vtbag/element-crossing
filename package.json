@@ -23,7 +23,8 @@
     "transitions",
     "view transition",
     "view-transition",
-    "preserve","state",
+    "preserve",
+    "state",
     "cross-document",
     "DOM"
   ],
@@ -39,9 +40,9 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
-    "@eslint/js": "^9.9.0",
+    "@eslint/js": "^9.9.1",
     "@types/dom-view-transitions": "^1.0.5",
-    "esbuild": "^0.23.0",
+    "esbuild": "^0.23.1",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4"
   }
