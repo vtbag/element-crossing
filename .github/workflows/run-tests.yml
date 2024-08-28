@@ -1,0 +1,33 @@
+
+name: Run Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: npm
+          cache-dependency-path: ./package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Prepare tests
+        run: npx playwright install --with-deps
+
+      - name: Run tests
+        run: npm test
+
