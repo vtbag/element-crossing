@@ -1,6 +1,6 @@
 {
   "name": "@vtbag/element-crossing",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "lib/index.js",
   "description": "Sites using cross-document view transitions look like SPAs but they still do full page loads on navigation. The element crossing provides a way to preserve DOM elements and data objects across page loads.",
   "files": [
