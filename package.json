@@ -1,11 +1,17 @@
 {
   "name": "@vtbag/element-crossing",
   "version": "0.0.0",
-  "main": "lib/index.js",
+  "main": "lib/vanilla.js",
   "description": "Sites using cross-document view transitions look like SPAs but they still do full page loads on navigation. The element crossing provides a way to preserve DOM elements and data objects across page loads.",
   "files": [
-    "lib/index.js"
+    "lib/vanilla.js",
+    "lib/over-the-top.js"
   ],
+  "exports": {
+    ".": "./lib/vanilla.js",
+    "./vanilla": "./lib/vanilla.js",
+    "./over-the-top": "./lib/over-the-top.js"
+  },
   "scripts": {
     "dev": "bin/bundle dev",
     "build": "npm run format; bin/bundle",

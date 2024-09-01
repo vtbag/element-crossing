@@ -6,4 +6,4 @@ else
   OPTS="--minify"
   (cd lib && rm *.js.map) >> /dev/null 2>&1
 fi
-npx esbuild src/index.ts --bundle $OPTS --target=ESnext --outfile=lib/index.js
+npx esbuild src/vanilla.ts src/over-the-top.ts --bundle $OPTS --target=ESnext --outdir=lib
