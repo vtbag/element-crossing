@@ -44,7 +44,7 @@
     "url": "https://github.com/sponsors/martrapp"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.7",
+    "@changesets/cli": "^2.27.8",
     "@eslint/js": "^9.9.1",
     "@types/dom-view-transitions": "^1.0.5",
     "esbuild": "^0.23.1",
