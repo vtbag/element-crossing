@@ -9,8 +9,7 @@
   ],
   "exports": {
     ".": "./lib/vanilla.js",
-    "./vanilla": "./lib/vanilla.js",
-    "./over-the-top": "./lib/over-the-top.js"
+    "./experimental": "./lib/over-the-top.js"
   },
   "scripts": {
     "dev": "bin/bundle dev",

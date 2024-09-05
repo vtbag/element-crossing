@@ -1,5 +1,17 @@
-export type ElementCrossing = {
-	frameDocument?: Document | undefined;
+export type CrossingStorage = {
+	pseudoAddress(object: object): string;
+	setItem(id: string, object: any): void;
+	getItem(id: string): any | undefined;
+	removeItem(id: string): void;
+	clear(): void;
+};
+
+type ElementCrossing = {
+	addrWeakMap: WeakMap<any, string>;
+	storageMap?: Map<string, any>;
+	frameDocument?: Document;
+	fun: CrossingStorage;
+	iframe?: HTMLIFrameElement;
 };
 
 declare global {
@@ -7,6 +19,7 @@ declare global {
 		__vtbag: {
 			elementCrossing?: ElementCrossing | undefined;
 		};
+		crossingStorage: ElementCrossing['fun'];
 	}
 }
 
