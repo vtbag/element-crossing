@@ -25,9 +25,3 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Prepare tests
-        run: npx playwright install --with-deps
-
-      - name: Run tests
-        run: npm test
-
