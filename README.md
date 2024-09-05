@@ -2,7 +2,7 @@
 
 Transfer selected element states across cross-document view transitions.
 
-![Build Status](https://github.com/vtbag/element-crossing/actions/workflows/run-tests.yml/badge.svg)
+![Build Status](https://github.com/vtbag/element-crossing/actions/workflows/run-build.yml/badge.svg)
 [![npm version](https://img.shields.io/npm/v/@vtbag/element-crossing/latest)](https://www.npmjs.com/package/@vtbag/element-crossing)
 [![NPM Downloads](https://img.shields.io/npm/dw/@vtbag/element-crossing)](https://www.npmjs.com/package/@vtbag/element-crossing)
 
