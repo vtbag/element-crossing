@@ -1,5 +1,5 @@
 
-name: Run Tests
+name: Just Build
 
 on:
   workflow_dispatch:
