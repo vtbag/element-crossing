@@ -162,7 +162,7 @@ function elementSpec(element: HTMLElement) {
 			}
 		});
 	if (!id) console.error('[crossing]', 'missing id in', element);
-	else return { id, specs };
+	else return { id, timestamp: new Date().getTime(), specs };
 }
 
 function restore(values: ElementSpec[]) {
@@ -216,8 +216,11 @@ function restore(values: ElementSpec[]) {
 								element
 							);
 						}
-						animations.forEach((a) => (a.currentTime = ~~(s.value ?? '0')));
-						element!.setAttribute(s.key, s.value ?? '');
+						animations.forEach(
+							(a) =>
+								(a.currentTime =
+									~~(s.value ?? '0') + (new Date().getTime() - elementSpec.timestamp))
+						);
 						break;
 					case 'elem':
 						const crossing = top?.__vtbag?.elementCrossing;

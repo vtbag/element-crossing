@@ -30,5 +30,6 @@ export type Spec = {
 };
 export type ElementSpec = {
 	id: string;
+	timestamp: number;
 	specs: Spec[];
 };
