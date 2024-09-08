@@ -1,3 +1,5 @@
+[⭐️Please star to support this work⭐️](https://github.com/vtbag/element-crossing)
+
 # 🚸 ElementCrossing
 
 Transfer selected element state across cross-document view transitions.

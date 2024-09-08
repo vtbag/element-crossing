@@ -29,12 +29,23 @@ function pageSwap() {
 	}
 }
 
+
+
 function pageReveal() {
+	if (
+		performance?.navigation?.type === 1 ||
+		// @ts-expect-error
+		('navigation' in self && self.navigation?.navigationType === 'reload')
+	) {
+		return;
+	}
 	let values;
-	if (self.crossingStorage) {
-		values = self.crossingStorage.getItem('@vtbag/element-crossing') ?? [];
+	let storage;
+	if ((storage = self.crossingStorage)) {
+		values = storage.getItem('@vtbag/element-crossing') ?? [];
 	} else {
-		values = JSON.parse(top!.sessionStorage.getItem('@vtbag/element-crossing') ?? '[]');
+		storage = top!.sessionStorage;
+		values = JSON.parse(storage.getItem('@vtbag/element-crossing') ?? '[]');
 	}
 	restore(values);
 }
