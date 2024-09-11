@@ -12,7 +12,13 @@ The @vtbag website can be found at https://vtbag.pages.dev/
 
 ## !!! News !!!
 
-First official release of this code!
+Small improvements for smoother animations and handling reloads.
+
+For details see the [CHANGELOG](https://github.com/vtbag/element-crossing/blob/main/CHANGELOG.md)
+
+## What happend before?
+
+> First official release of this code!
 
 ## What is it?
 
