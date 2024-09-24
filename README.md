@@ -1,6 +1,6 @@
 [⭐️Please star to support this work⭐️](https://github.com/vtbag/element-crossing)
 
-# 🚸 ElementCrossing
+# 🚸 The Element Crossing
 
 Transfer selected element state across cross-document view transitions.
 
@@ -17,7 +17,7 @@ Small improvements for smoother animations and handling reloads.
 
 For details see the [CHANGELOG](https://github.com/vtbag/element-crossing/blob/main/CHANGELOG.md)
 
-## What happend before?
+## What happened before?
 
 > First official release of this code!
 
