@@ -1,5 +1,11 @@
 # @vtbag/element-crossing
 
+## 1.0.2
+
+### Patch Changes
+
+- 2ccb6db: Adds .d.ts declarations
+
 ## 1.0.1 - 2024-09-08
 
 ### Patch Changes
