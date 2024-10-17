@@ -1,6 +1,6 @@
 # @vtbag/element-crossing
 
-## 1.0.2
+## 1.0.2 - 2024-10-17
 
 ### Patch Changes
 
