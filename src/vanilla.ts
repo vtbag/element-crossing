@@ -263,7 +263,9 @@ function restore(values: ElementSpec[]) {
 							);
 							break;
 						}
-						element.setCurrentTime(parseFloat(s.value ?? '0'));
+						element.setCurrentTime(
+							parseFloat(s.value ?? '0') + (new Date().getTime() - elementSpec.timestamp) / 1000
+						);
 					case 'elem':
 						const crossing = top?.__vtbag?.elementCrossing;
 						if (crossing?.fun) {
