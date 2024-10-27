@@ -167,6 +167,20 @@ function elementSpec(element: HTMLElement) {
 						specs.push({ kind, key, value: '' + (animations[0].currentTime ?? 0) });
 					}
 					break;
+				case 'svg-anim':
+					if (!(element instanceof SVGSVGElement)) {
+						console.error(
+							'[crossing]',
+							`retrieval: element for ${key} is not an SVG element`,
+							element
+						);
+						break;
+					}
+					const currentTime = element.getCurrentTime();
+					if (currentTime > 0) {
+						specs.push({ kind, key, value: currentTime.toString() });
+					}
+					break;
 				case 'elem':
 					const crossing = top?.__vtbag?.elementCrossing;
 					if (crossing?.fun) {
@@ -240,6 +254,16 @@ function restore(values: ElementSpec[]) {
 									~~(s.value ?? '0') + (new Date().getTime() - elementSpec.timestamp))
 						);
 						break;
+					case 'svg-anim':
+						if (!(element instanceof SVGSVGElement)) {
+							console.error(
+								'[crossing]',
+								`restore: element for ${s.key} is not an SVG element`,
+								element
+							);
+							break;
+						}
+						element.setCurrentTime(parseFloat(s.value ?? '0'));
 					case 'elem':
 						const crossing = top?.__vtbag?.elementCrossing;
 						if (crossing?.fun) {
