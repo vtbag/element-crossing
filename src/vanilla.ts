@@ -1,6 +1,7 @@
 import { ElementSpec, Spec } from './types';
 
 const DEBUG = false;
+const SVG_ANIM_KEY = '/svg';
 
 const crossing = top!.__vtbag?.elementCrossing;
 init();
@@ -153,32 +154,34 @@ function elementSpec(element: HTMLElement) {
 					});
 					break;
 				case 'anim':
-					const animations = element
-						.getAnimations()
-						.filter((a) => a instanceof CSSAnimation && a.animationName === key);
-					if (animations.length > 1) {
-						console.error(
-							'[crossing]',
-							`retrieval: animation name ${key} is not unique for`,
-							element
-						);
-					}
-					if (animations.length > 0) {
-						specs.push({ kind, key, value: '' + (animations[0].currentTime ?? 0) });
-					}
-					break;
-				case 'svg-anim':
-					if (!(element instanceof SVGSVGElement)) {
-						console.error(
-							'[crossing]',
-							`retrieval: element for ${key} is not an SVG element`,
-							element
-						);
-						break;
-					}
-					const currentTime = element.getCurrentTime();
-					if (currentTime > 0) {
-						specs.push({ kind, key, value: currentTime.toString() });
+					if (key === SVG_ANIM_KEY) {
+						if (!(element instanceof SVGSVGElement)) {
+							console.error(
+								'[crossing]',
+								`retrieval: element is not an SVG element, but "${key}" was used for its key`,
+								element
+							);
+							break;
+						}
+
+						const currentTime = element.getCurrentTime();
+						if (currentTime > 0) {
+							specs.push({ kind, key, value: currentTime.toString() });
+						}
+					} else {
+						const animations = element
+							.getAnimations()
+							.filter((a) => a instanceof CSSAnimation && a.animationName === key);
+						if (animations.length > 1) {
+							console.error(
+								'[crossing]',
+								`retrieval: animation name ${key} is not unique for`,
+								element
+							);
+						}
+						if (animations.length > 0) {
+							specs.push({ kind, key, value: '' + (animations[0].currentTime ?? 0) });
+						}
 					}
 					break;
 				case 'elem':
@@ -238,34 +241,36 @@ function restore(values: ElementSpec[]) {
 						(element as any)[s.key] = parseFloat(s.value ?? '0');
 						break;
 					case 'anim':
-						const animations = element!
-							.getAnimations()
-							.filter((a) => a instanceof CSSAnimation && a.animationName === s.key);
-						if (animations.length > 1) {
-							console.warn(
-								'[crossing]',
-								`restore: animation name ${s.key} is not unique for`,
-								element
+						if (s.key === SVG_ANIM_KEY) {
+							if (!(element instanceof SVGSVGElement)) {
+								console.error(
+									'[crossing]',
+									`restore: element for key ${s.key} is not an SVG element`,
+									element
+								);
+								break;
+							}
+							element.setCurrentTime(
+								parseFloat(s.value ?? '0') + (new Date().getTime() - elementSpec.timestamp) / 1000
+							);
+						} else {
+							const animations = element!
+								.getAnimations()
+								.filter((a) => a instanceof CSSAnimation && a.animationName === s.key);
+							if (animations.length > 1) {
+								console.warn(
+									'[crossing]',
+									`restore: animation name ${s.key} is not unique for`,
+									element
+								);
+							}
+							animations.forEach(
+								(a) =>
+									(a.currentTime =
+										~~(s.value ?? '0') + (new Date().getTime() - elementSpec.timestamp))
 							);
 						}
-						animations.forEach(
-							(a) =>
-								(a.currentTime =
-									~~(s.value ?? '0') + (new Date().getTime() - elementSpec.timestamp))
-						);
 						break;
-					case 'svg-anim':
-						if (!(element instanceof SVGSVGElement)) {
-							console.error(
-								'[crossing]',
-								`restore: element for ${s.key} is not an SVG element`,
-								element
-							);
-							break;
-						}
-						element.setCurrentTime(
-							parseFloat(s.value ?? '0') + (new Date().getTime() - elementSpec.timestamp) / 1000
-						);
 					case 'elem':
 						const crossing = top?.__vtbag?.elementCrossing;
 						if (crossing?.fun) {
