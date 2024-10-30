@@ -1,11 +1,12 @@
 # @vtbag/element-crossing
 
-## 1.0.3
+## 1.0.3 - 2024-10-30 
 
 ### Patch Changes
 
-- d4fd998: Extend `anim` expression with support for SVG animations.
-
+- d4fd998: Extend `anim` expression with support for SVG animations.\
+  **Many thanks to [Lukas](https://github.com/trombach)** for this contirbution!
+  
   To transfer the SVG animation state to the new document use the `/svg` key for the `anim` expression
 
   ```html
