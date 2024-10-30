@@ -5,11 +5,10 @@ declare global {
 	}
 
 	type UpdateCallback = undefined | (() => void | Promise<void>);
-	type StartViewTransitionParameter
-		= UpdateCallback | { types?: string[]; update: UpdateCallback };
+	type StartViewTransitionParameter = UpdateCallback | { types?: string[]; update: UpdateCallback };
 
 	interface Document {
-    startViewTransition(param: StartViewTransitionParameter): ViewTransition;
+		startViewTransition(param: StartViewTransitionParameter): ViewTransition;
 	}
 	interface PageRevealEvent extends Event {
 		viewTransition: ViewTransition;
