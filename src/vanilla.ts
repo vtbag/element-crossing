@@ -16,17 +16,11 @@ function init() {
 		self.crossingStorage = crossing.fun;
 	}
 
-	document.addEventListener('astro:after-preparation', () => {
-		pageSwap();
-	});
-	document.addEventListener('astro:after-swap', () => {
-		pageReveal();
-	});
+	document.addEventListener('astro:after-preparation', pageSwap);
+	document.addEventListener('astro:after-swap', pageReveal);
 
-	self.addEventListener('onpageswap' in self ? 'pageswap' : 'pagehide', pageSwap, { once: true });
-	self.addEventListener('onpagereveal' in self ? 'pagereveal' : 'DOMContentLoaded', pageReveal, {
-		once: true,
-	});
+	self.addEventListener('onpageswap' in self ? 'pageswap' : 'pagehide', pageSwap);
+	self.addEventListener('onpagereveal' in self ? 'pagereveal' : 'DOMContentLoaded', pageReveal);
 }
 
 function pageSwap() {
