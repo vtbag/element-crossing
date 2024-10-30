@@ -13,7 +13,7 @@ The @vtbag website can be found at https://vtbag.pages.dev/
 
 ## !!! News !!!
 
-Updated dependencies.
+Now also preserves the animation state of animated SVGs across cross-document view transitions.
 
 For details see the [CHANGELOG](https://github.com/vtbag/element-crossing/blob/main/CHANGELOG.md)
 
