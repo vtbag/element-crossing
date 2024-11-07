@@ -9,7 +9,7 @@ Transfer selected element state across cross-document view transitions.
 ![minzip](https://badgen.net/bundlephobia/minzip/@vtbag/element-crossing)
 [![NPM Downloads](https://img.shields.io/npm/dw/@vtbag/element-crossing)](https://www.npmjs.com/package/@vtbag/element-crossing)
 
-The @vtbag website can be found at https://vtbag.pages.dev/
+The @vtbag website can be found at https://vtbag.dev/
 
 ## !!! News !!!
 
@@ -40,4 +40,4 @@ Simply annotate your elements in the HTML source or DOM, and let the library han
 
 Address any CSS property or DOM element property, any CSS class, or CSS animation.
 
-[View configuration examples](https://vtbag.pages.dev/tools/element-crossing/#applications-with-real-world-examples) and [see the Element Crossing in action](https://vtbag.pages.dev/crossing/vanilla/1/)
+[View configuration examples](https://vtbag.dev/tools/element-crossing/#applications-with-real-world-examples) and [see the Element Crossing in action](https://vtbag.dev/crossing/vanilla/1/)

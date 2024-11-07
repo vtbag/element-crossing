@@ -41,14 +41,14 @@
 	"bugs": {
 		"url": "https://github.com/vtbag/element-crossing/issues"
 	},
-	"homepage": "https://vtbag.pages.dev",
+	"homepage": "https://vtbag.dev",
 	"funding": {
 		"type": "github",
 		"url": "https://github.com/sponsors/martrapp"
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.27.9",
-		"@eslint/js": "^9.13.0",
+		"@eslint/js": "^9.14.0",
 		"@types/dom-view-transitions": "^1.0.5",
 		"esbuild": "^0.24.0",
 		"prettier": "^3.3.3",
