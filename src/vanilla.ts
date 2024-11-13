@@ -25,9 +25,9 @@ function init() {
 
 function pageSwap() {
 	if (self.crossingStorage) {
-		self.crossingStorage.setItem('@vtbag/element-crossing', retrieve());
+		self.crossingStorage.setItem('@vtbag/element-crossing', collect());
 	} else {
-		top!.sessionStorage.setItem('@vtbag/element-crossing', JSON.stringify(retrieve()));
+		top!.sessionStorage.setItem('@vtbag/element-crossing', JSON.stringify(collect()));
 	}
 }
 
@@ -52,7 +52,7 @@ function pageReveal() {
 	}
 }
 
-function retrieve() {
+function collect() {
 	const known = new Set<string>();
 	const values: ElementSpec[] = [];
 	self.document.querySelectorAll<HTMLElement>('[data-vtbag-x]').forEach((element) => {
@@ -139,7 +139,9 @@ function elementSpec(element: HTMLElement) {
 				case 'bool':
 				case 'num':
 				case 'prop':
-					const val = element[key as keyof HTMLElement];
+					const val = key.startsWith('data-')
+						? element.dataset[key.substring(5)]
+						: element[key as keyof HTMLElement];
 					const type = typeof val;
 					specs.push({
 						kind: type === 'boolean' ? 'bool' : type === 'number' ? 'num' : 'prop',
@@ -226,7 +228,11 @@ function restore(values: ElementSpec[]) {
 						}
 						break;
 					case 'prop':
-						(element as any)[s.key] = s.value;
+						if (s.key.startsWith('data-')) {
+							element!.dataset[s.key.substring(5)] = s.value;
+						} else {
+							(element as any)[s.key] = s.value;
+						}
 						break;
 					case 'bool':
 						(element as any)[s.key] = s.value === 'true';
