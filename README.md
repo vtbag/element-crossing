@@ -13,11 +13,13 @@ The @vtbag website can be found at https://vtbag.dev/
 
 ## !!! News !!!
 
-Now also preserves the animation state of animated SVGs across cross-document view transitions!
+Now also fully supports crossing of `data-*` properties.
 
 For details see the [CHANGELOG](https://github.com/vtbag/element-crossing/blob/main/CHANGELOG.md)
 
 ## What happened before?
+
+> Now also preserves the animation state of animated SVGs across cross-document view transitions, thanks to [Lukas](https://github.com/trombach)!
 
 > Small improvements for smoother animations and handling reloads.
 
