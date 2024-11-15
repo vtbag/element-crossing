@@ -1,10 +1,10 @@
 # @vtbag/element-crossing
 
-## 1.0.4
+## 1.0.4 - 2024-11-15
 
 ### Patch Changes
 
-- a7cbdee: Fixes access to data-\* properties, which were previously ignored.
+- a7cbdee: Fixes access to `data-*` properties, which were previously ignored.
 
 ## 1.0.3 - 2024-10-30
 
