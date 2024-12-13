@@ -20,8 +20,8 @@ declare global {
 	}
 
 	interface NavigationActivation {
-		entry: NavigationEntry;
-		from: NavigationEntry;
+		entry: NavigationHistoryEntry;
+		from: NavigationHistoryEntry;
 		navigationType: string;
 	}
 	interface AnimationEffect {
