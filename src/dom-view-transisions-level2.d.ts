@@ -22,7 +22,7 @@ declare global {
 	interface NavigationActivation {
 		entry: NavigationHistoryEntry;
 		from: NavigationHistoryEntry;
-		navigationType: string;
+		navigationType: NavigationTypeString;
 	}
 	interface AnimationEffect {
 		target: HTMLElement;
