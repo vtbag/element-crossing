@@ -42,12 +42,8 @@ function pageReveal() {
 	}
 	top!.sessionStorage.removeItem('@vtbag/element-crossing');
 	self.crossingStorage?.removeItem('@vtbag/element-crossing');
-	if (
-		performance?.navigation?.type !== 1 &&
-		'navigation' in self &&
-		// @ts-expect-error
-		self.navigation?.navigationType !== 'reload'
-	) {
+	if ("navigation" in self && self.navigation?.activation?.navigationType !== 'reload'
+		|| performance?.navigation?.type !== 1) {
 		restore(values);
 	}
 }
@@ -201,12 +197,12 @@ function restore(values: ElementSpec[]) {
 	values.forEach((elementSpec: ElementSpec) => {
 		let element = document.querySelector<HTMLElement>(
 			'#' +
-				elementSpec.id +
-				",[data-vtbag-x*='#" +
-				elementSpec.id +
-				"'],[data-vtbag-x*='id:" +
-				elementSpec.id +
-				"']"
+			elementSpec.id +
+			",[data-vtbag-x*='#" +
+			elementSpec.id +
+			"'],[data-vtbag-x*='id:" +
+			elementSpec.id +
+			"']"
 		);
 		if (element) {
 			elementSpec.specs.forEach((s) => {
@@ -266,8 +262,8 @@ function restore(values: ElementSpec[]) {
 							}
 							animations.forEach(
 								(a) =>
-									(a.currentTime =
-										~~(s.value ?? '0') + (new Date().getTime() - elementSpec.timestamp))
+								(a.currentTime =
+									~~(s.value ?? '0') + (new Date().getTime() - elementSpec.timestamp))
 							);
 						}
 						break;
