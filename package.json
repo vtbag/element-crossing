@@ -1,7 +1,7 @@
 {
 	"name": "@vtbag/element-crossing",
 	"type": "module",
-	"version": "1.0.4",
+	"version": "1.1.0",
 	"main": "lib/vanilla.js",
 	"description": "Sites using cross-document view transitions do full page loads of static content on navigation. The element crossing provides a way to preserve current dynamic state of selected elements across cross-document view transitions for a smoother user experience.",
 	"files": [
