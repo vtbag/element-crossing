@@ -13,11 +13,13 @@ The @vtbag website can be found at https://vtbag.dev/
 
 ## !!! News !!!
 
-Now also fully supports crossing of `data-*` properties.
+Native cross-document view transitions now work for Safari, and so does the Element Crossing!
 
 For details see the [CHANGELOG](https://github.com/vtbag/element-crossing/blob/main/CHANGELOG.md)
 
 ## What happened before?
+
+> Full support for crossing of `data-*` properties.
 
 > Now also preserves the animation state of animated SVGs across cross-document view transitions, thanks to [Lukas](https://github.com/trombach)!
 
