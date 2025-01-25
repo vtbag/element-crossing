@@ -5,7 +5,7 @@ declare global {
 	}
 
 	type UpdateCallback = undefined | (() => void | Promise<void>);
-	type StartViewTransitionParameter = { types?: string[]; update?: UpdateCallback };
+	type StartViewTransitionParameter = { types?: string[] | Set<string>; update?: UpdateCallback; };
 
 	interface Document {
 		startViewTransition(param?: StartViewTransitionParameter | UpdateCallback): ViewTransition;
@@ -40,4 +40,4 @@ declare global {
 		activation: NavigationActivation;
 	}
 }
-export {};
+export { };
