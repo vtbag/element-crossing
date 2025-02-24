@@ -1,17 +1,16 @@
 declare global {
-	interface PageSwapEvent extends Event {
-		viewTransition: ViewTransition;
-		activation: NavigationActivation;
-	}
-
 	type UpdateCallback = undefined | (() => void | Promise<void>);
-	type StartViewTransitionParameter = { types?: string[] | Set<string>; update?: UpdateCallback; };
+	type StartViewTransitionParameter = { types?: string[] | Set<string>; update?: UpdateCallback };
 
 	interface Document {
-		startViewTransition(param?: StartViewTransitionParameter | UpdateCallback): ViewTransition;
+		startViewTransition?(param?: StartViewTransitionParameter | UpdateCallback): ViewTransition;
+	}
+	interface PageSwapEvent extends Event {
+		viewTransition?: ViewTransition;
+		activation?: NavigationActivation;
 	}
 	interface PageRevealEvent extends Event {
-		viewTransition: ViewTransition;
+		viewTransition?: ViewTransition;
 	}
 
 	interface WindowEventMap {
@@ -31,13 +30,13 @@ declare global {
 	}
 
 	interface ViewTransition {
-		types: Set<string>;
+		types?: Set<string>;
 	}
 	interface Window {
-		navigation: Navigation;
+		navigation?: Navigation;
 	}
 	interface Navigation {
 		activation: NavigationActivation;
 	}
 }
-export { };
+export {};
