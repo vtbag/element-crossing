@@ -1,11 +1,24 @@
 #! /bin/sh
 
+rm -rf lib
+
 if [ "$1" = "dev" ]; then
   OPTS="--sourcemap --watch"
+  TSC_OPTS="--watch"
+elif [ "$1" = "test" ]; then
+  OPTS="--sourcemap"
 else
   OPTS="--minify"
-  (cd lib && rm *.js.map) >> /dev/null 2>&1
 fi
-npx esbuild src/vanilla.ts src/over-the-top.ts --bundle $OPTS --target=ESnext --outdir=lib
 
-tsc
+if echo "$TSC_OPTS" | grep -q -- "--watch"; then
+  tsc $TSC_OPTS &
+else
+  tsc $TSC_OPTS
+  rm -rf lib/bundled
+  npx esbuild src/vanilla.ts src/over-the-top.ts --bundle $OPTS --target=ESnext --outdir=lib
+  cp lib/*.js lib/*.map tests >/dev/null 2>&1
+fi
+
+rm -f lib/over-the-top.d.ts
+rm -f lib/vanilla.d.ts
