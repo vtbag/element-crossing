@@ -39,7 +39,7 @@ function initBorderLands() {
 		const lang = topDoc.documentElement.lang;
 		const colorScheme = topDoc.documentElement.style.colorScheme;
 		const root = topDoc.createElement('html');
-		root.innerHTML = `<body style="margin:0; overflow=clip"><iframe width=${innerWidth} height=${innerHeight} style="border:0" src="${location.href}"/>`;
+		root.innerHTML = `<body style="margin:0; overflow=clip"><iframe width=${innerWidth} height=${innerHeight} style="border:0" src="${location.href}"></iframe>`;
 		crossing.iframe = root.querySelector<HTMLIFrameElement>('iframe')!;
 		root.lang = lang;
 		root.style.overflow = 'clip';
