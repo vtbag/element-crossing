@@ -12,23 +12,25 @@ on:
           - '--provenance --access public'
           - '--provenance --access public --tag preview'
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: '18.x'
+          node-version: '22'
           registry-url: 'https://registry.npmjs.org'
           scope: '@vtbag'
       - run: npm install -g npm
+      - run: npm --version
       - run: npm ci
       - run: npm run build
       - run: npm publish ${OPTIONS}
         env:
           OPTIONS: ${{ inputs.options }}
-          NODE_AUTH_TOKEN: ${{ secrets.VTBAG_NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.VTBOT_NPM_TOKEN }}
