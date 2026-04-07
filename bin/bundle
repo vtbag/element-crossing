@@ -12,9 +12,9 @@ else
 fi
 
 if echo "$TSC_OPTS" | grep -q -- "--watch"; then
-  tsc $TSC_OPTS &
+  npx tsc $TSC_OPTS &
 else
-  tsc $TSC_OPTS
+  npx tsc $TSC_OPTS
   rm -rf lib/bundled
   npx esbuild src/vanilla.ts src/over-the-top.ts --bundle $OPTS --target=ESnext --outdir=lib
   # cp lib/*.js lib/*.map tests/public >/dev/null 2>&1
